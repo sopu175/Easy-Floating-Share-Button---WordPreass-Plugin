@@ -1,0 +1,151 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+
+.efsb-floating-button {
+    /* Style for Button Style 1 */
+    position: fixed;
+    right: 0;
+    top: 50%;
+    z-index: 99;
+    transform: translateY(-50%);
+}
+.style2.efsb-floating-button{
+    right: unset;
+    left: 0;
+}
+
+.style3.efsb-floating-button{
+    right: unset;
+    left: 5%;
+    top:0;
+    transform: unset;
+
+}
+.style3.efsb-floating-button ul{
+    display: flex;
+}
+
+.style3.efsb-floating-button ul li{
+    margin-left: 10px;
+}
+.style4.efsb-floating-button{
+    right: unset;
+    left: 5%;
+    top:unset;
+    bottom:0;
+    transform: unset;
+}
+.style4.efsb-floating-button ul{
+    display: flex;
+}
+
+.style4.efsb-floating-button ul li{
+    margin-left: 10px;
+}
+.style6.efsb-floating-button{
+    left: unset;
+    right: 5%;
+    top:unset;
+    bottom:0;
+    transform: unset;
+}
+
+.style6.efsb-floating-button ul{
+    display: flex;
+}
+
+.style6.efsb-floating-button ul li{
+    margin-left: 10px;
+}
+
+.style5.efsb-floating-button{
+    right: 5%;
+    left: unset;
+    top:0;
+    bottom:unset;
+    transform: unset;
+}
+
+.style5.efsb-floating-button ul{
+    display: flex;
+}
+
+.style5.efsb-floating-button ul li{
+    margin-left: 10px;
+}
+
+.style5.efsb-floating-button ul li:last-child{
+    margin-left: 0;
+}
+
+.efsb-floating-button  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.efsb-floating-button ul li{
+    list-style: none;
+}
+.efsb-floating-button ul li a {
+    color: #000; /* Set default icon color */
+    display: block;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+}
+.efsb-floating-button ul li a i:before{
+    font-size: 20px;
+}
+.efsb-floating-button ul li:hover a {
+    color: #ff0000; /* Set hover icon color */
+}
+
+/* Social media platform specific colors */
+
+.efsb-floating-button ul li.facebook a {
+    color: #3b5998; /* Set Facebook icon color */
+}
+
+.efsb-floating-button ul li.twitter a {
+    color: #1da1f2; /* Set Twitter icon color */
+}
+
+.efsb-floating-button ul li.pinterest a {
+    color: #bd081c; /* Set Pinterest icon color */
+}
+
+.efsb-floating-button ul li.envelope a {
+    color: #e74c3c; /* Set Email icon color */
+}
+
+.efsb-floating-button ul li.linkedin a {
+    color: #0077b5; /* Set LinkedIn icon color */
+}
+
+.efsb-floating-button ul li.skype a {
+    color: #00aff0; /* Set Skype icon color */
+}
+
+.efsb-floating-button ul li.whatsapp a {
+    color: #25d366; /* Set WhatsApp icon color */
+}
+
+.efsb-floating-button ul li.messenger a {
+    color: #0084ff; /* Set Messenger icon color */
+}
+
+.efsb-floating-button ul li.telegram a {
+    color: #0088cc; /* Set Telegram icon color */
+}
+
+
+.efsb-floating-button.medium ul li a i:before{
+    font-size: 30px !important;
+}
+
+.efsb-floating-button.large ul li a i:before{
+    font-size: 40px !important;
+}
