@@ -102,20 +102,20 @@ class Easy_Floating_Share_Button_Admin {
 	}
 
 
-// Add admin menu for Easy Floating Share Button
+    // Add admin menu for Easy Floating Share Button
 	function efsb_add_admin_menu() {
 		add_menu_page(
 			'Easy Floating Share Button',
 			'Floating Share Button',
 			'manage_options',
 			'efsb-settings',
-			array($this, 'efsb_settings_page'), // Update the callback to use $this
+			array( $this, 'efsb_settings_page' ), // Update the callback to use $this
 			'dashicons-share',
 			75
 		);
 	}
 
-// Create settings page for Easy Floating Share Button
+    // Create settings page for Easy Floating Share Button
 	function efsb_settings_page() {
 		?>
         <div class="wrap">
@@ -137,107 +137,105 @@ class Easy_Floating_Share_Button_Admin {
 		add_settings_section(
 			'efsb_settings_section',
 			'General Settings',
-			array($this, 'efsb_settings_section_callback'), // Update the callback to use $this
+			array( $this, 'efsb_settings_section_callback' ), // Update the callback to use $this
 			'efsb_settings'
 		);
 
 		add_settings_field(
 			'efsb_button_style',
 			'Button Style',
-			array($this, 'efsb_button_style_callback'), // Update the callback to use $this
+			array( $this, 'efsb_button_style_callback' ), // Update the callback to use $this
 			'efsb_settings',
 			'efsb_settings_section'
 		);
 		add_settings_field(
 			'efsb_button_style_font',
 			'Icon Size',
-			array($this, 'efsb_button_stylefont_callback'), // Update the callback to use $this
+			array( $this, 'efsb_button_stylefont_callback' ), // Update the callback to use $this
 			'efsb_settings',
 			'efsb_settings_section'
 		);
 
 
 		$social_media_platforms = array(
-			'facebook' => 'Facebook',
-			'linkedin' => 'LinkedIn',
-			'skype' => 'Skype',
-			'twitter' => 'Twitter',
-			'email' => 'Email',
+			'facebook'   => 'Facebook',
+			'linkedin'   => 'LinkedIn',
+			'skype'      => 'Skype',
+			'twitter'    => 'Twitter',
+			'email'      => 'Email',
 			'printerest' => 'Printerest',
-			'whatsapp' => 'WhatsApp',
-			'messenger' => 'Messenger',
-			'telegram' => 'Telegram',
+			'whatsapp'   => 'WhatsApp',
+			'messenger'  => 'Messenger',
+			'telegram'   => 'Telegram',
 			// Add more platforms as needed
 		);
 
-		foreach ($social_media_platforms as $platform => $label) {
+		foreach ( $social_media_platforms as $platform => $label ) {
 			add_settings_field(
 				"efsb_enable_$platform",
 				"$label",
-				array($this, 'efsb_enable_platform_callback'),
+				array( $this, 'efsb_enable_platform_callback' ),
 				'efsb_settings',
 				'efsb_settings_section',
-				array('platform' => $platform)
+				array( 'platform' => $platform )
 			);
 
-			register_setting('efsb_settings', "efsb_enable_$platform");
+			register_setting( 'efsb_settings', "efsb_enable_$platform" );
 		}
 
 
-
 		// Register the option and the callback for saving the value
-		register_setting('efsb_settings', 'efsb_enable_floating_icon', 'efsb_save_enable_floating_icon_option');
+		register_setting( 'efsb_settings', 'efsb_enable_floating_icon', 'efsb_save_enable_floating_icon_option' );
 		register_setting( 'efsb_settings', 'efsb_button_style' );
 		register_setting( 'efsb_settings', 'efsb_button_style_font' );
 		// Register more settings fields as needed
 	}
 
 
+    // Callback function for enabling each social media platform
+	function efsb_enable_platform_callback( $args ) {
+		$platform     = $args['platform'];
+		$option_value = get_option( "efsb_enable_$platform" );
 
-// Callback function for enabling each social media platform
-	function efsb_enable_platform_callback($args) {
-		$platform = $args['platform'];
-		$option_value = get_option("efsb_enable_$platform");
-
-		echo "<input type='checkbox' id='efsb_enable_$platform' name='efsb_enable_$platform' value='1' " . checked($option_value, 1, false) . ">";
+		echo "<input type='checkbox' id='efsb_enable_$platform' name='efsb_enable_$platform' value='1' " . checked( $option_value, 1, false ) . ">";
 	}
 
-// Callback function for settings section
+    // Callback function for settings section
 	function efsb_settings_section_callback() {
-		$efsb_enable_floating_icon = get_option('efsb_enable_floating_icon');
+		$efsb_enable_floating_icon = get_option( 'efsb_enable_floating_icon' );
 
 		echo '<label for="efsb_enable_floating_icon">';
-		echo '<input type="checkbox" id="efsb_enable_floating_icon" name="efsb_enable_floating_icon" value="1" ' . checked($efsb_enable_floating_icon, 1, false) . '>';
+		echo '<input type="checkbox" id="efsb_enable_floating_icon" name="efsb_enable_floating_icon" value="1" ' . checked( $efsb_enable_floating_icon, 1, false ) . '>';
 		echo 'Enable Floating Icon</label>';
 		echo '<h3>Social Media Platforms</h3>';
 
 		$social_media_platforms = array(
-			'facebook' => 'Facebook',
-			'linkedin' => 'LinkedIn',
-			'skype' => 'Skype',
-			'twitter' => 'Twitter',
-			'email' => 'Email',
+			'facebook'   => 'Facebook',
+			'linkedin'   => 'LinkedIn',
+			'skype'      => 'Skype',
+			'twitter'    => 'Twitter',
+			'email'      => 'Email',
 			'printerest' => 'Printerest',
-			'whatsapp' => 'WhatsApp',
-			'messenger' => 'Messenger',
-			'telegram' => 'Telegram',
+			'whatsapp'   => 'WhatsApp',
+			'messenger'  => 'Messenger',
+			'telegram'   => 'Telegram',
 			// Add more platforms as needed
 		);
 
-		foreach ($social_media_platforms as $platform => $label) {
-			$option_value = get_option("efsb_enable_$platform");
+		foreach ( $social_media_platforms as $platform => $label ) {
+			$option_value = get_option( "efsb_enable_$platform" );
 			echo "<label for='efsb_enable_$platform'>";
-			echo "<input type='checkbox' id='efsb_enable_$platform' name='efsb_enable_$platform' value='1' " . checked($option_value, 1, false) . ">";
+			echo "<input type='checkbox' id='efsb_enable_$platform' name='efsb_enable_$platform' value='1' " . checked( $option_value, 1, false ) . ">";
 			echo "$label</label><br>";
 		}
 	}
 
-// Callback function for saving the option value
-	function efsb_save_enable_floating_icon_option($input) {
-		return isset($input) ? 1 : 0;
+    // Callback function for saving the option value
+	function efsb_save_enable_floating_icon_option( $input ) {
+		return isset( $input ) ? 1 : 0;
 	}
 
-// Callback function for button style setting
+    // Callback function for button style setting
 	function efsb_button_style_callback() {
 		$button_style = get_option( 'efsb_button_style' );
 		?>
@@ -267,7 +265,7 @@ class Easy_Floating_Share_Button_Admin {
 		<?php
 	}
 
-	function efsb_save_button_stylefont_option($input) {
+	function efsb_save_button_stylefont_option( $input ) {
 		return $input; // No need for isset check since it's a select field
 	}
 }
